@@ -1,0 +1,23 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=справка.chm
+Contents file=Table of Contents.hhc
+Default topic=1.htm
+Display compile progress=No
+Language=0x419 Русский (Россия)
+
+
+[FILES]
+rmain.htm
+smain.htm
+tmain.htm
+rreview.htm
+treview.htm
+profile.htm
+schedule.htm
+
+[MAP]
+#include ..\Yes App\profit.h
+
+[INFOTYPES]
+
