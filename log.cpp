@@ -51,7 +51,7 @@ namespace kursme {
 		dbreader = com->ExecuteReader();
 		while (dbreader->Read())
 		{
-			idx = safe_cast<int>(dbreader->GetValue(0)); /////////прописать роли
+			idx = safe_cast<int>(dbreader->GetValue(0)); 
 			countx = safe_cast<int>(dbreader->GetValue(14));;
 			whox = SystemToStl(dbreader->GetString(12));
 
@@ -92,7 +92,6 @@ namespace kursme {
 	System::Void log::log_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
 	{
 		conn->Close();
-		//this->Close();
 	}
 
 	System::Void log::label5_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -100,7 +99,6 @@ namespace kursme {
 		f = gcnew reg(this);
 		f->Show();
 		this->Hide();
-		//conn->Close();
 	}
 	System::Void log::buttonlogin_Click(System::Object^ sender, System::EventArgs^) {
 		data();
@@ -137,15 +135,11 @@ namespace kursme {
 		hours = hoursx;
 		count = countx;
 
-
-
-
 		string sql = "SELECT * FROM `пользователи` WHERE `логин` LIKE '";
 		sql += (login)+"'";
 		String^ comstr = gcnew String(sql.c_str());
 		OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
 		dbreader = com->ExecuteReader();
-		//string bul = "no";
 		if (dbreader->Read())
 		{
 					counter(count, conn);
@@ -155,7 +149,6 @@ namespace kursme {
 						f = gcnew tmenu(this);
 						f->Show();
 						this->Hide();
-						//conn->Close();
 					}
 					else
 					{
@@ -168,29 +161,5 @@ namespace kursme {
 			MessageBox::Show("Такого аккаунта не существует", "Ошибка", MessageBoxButtons::OK);
 		}
 		dbreader->Close();
-		/*
-		if (bul == "yes")
-		{
-			dbreader = com->ExecuteReader();
-			while (dbreader->Read())
-			{
-				counter(count, conn);
-				if (pass == SystemToStl(dbreader->GetString(2)))
-				{
-					tmenu^ f;
-					f = gcnew tmenu(this);
-					f->Show();
-					this->Hide();
-					conn->Close();
-				}
-				else
-				{
-					MessageBox::Show("Неверный логин или пароль", "Ошибка", MessageBoxButtons::OK);
-				}
-			}
-			dbreader->Close();
-		}
-		*/
-		
 	}
 }

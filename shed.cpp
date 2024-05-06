@@ -36,7 +36,7 @@ namespace kursme {
             while (std::getline(in, line))
             {
                 String^ line2 = gcnew String(line.c_str());
-                this->panel1->Controls["textbox" + i.ToString()]->Text = line2;            ///////////работает
+                this->panel1->Controls["textbox" + i.ToString()]->Text = line2;   
                 i++;
             }
         }
@@ -49,12 +49,9 @@ namespace kursme {
     }
 
     System::Void shed::buttonshedback_Click(System::Object^ sender, System::EventArgs^ e) {
-        
-
         // запись в файл
         string ID = SystemToStl(id.ToString());
-        //std::string line;
-        string str = ""; //String^ name;
+        string str = ""; 
         std::ofstream out("schedule"+ID+".txt", std::ios_base::trunc);
         if (out.is_open())
         {
@@ -71,45 +68,8 @@ namespace kursme {
                 str = SystemToStl(this->panel1->Controls["textbox" + it.ToString()]->Text);
                 out1 << str << std::endl;
             }
-            /*
-            for each (Control ^ c in panel1->Controls)
-            {
-                if ((isinst< TextBox^ >(c)) && (c->Name != "textBox1"))
-                {
-                    str = SystemToStl(c->Text);
-                    out1 << str << std::endl;
-                    //str = "";
-                }
-            }
-            */
         }
         out1.close();
-
-
-
-
-        for (int it = 2; it != 85; it++)
-        {
-            str = SystemToStl(this->panel1->Controls["textbox" + it.ToString()]->Text);
-            out1 << str << std::endl;
-        }
-
-
-
-
-
-        // запись в бд
-        /*
-        string ID = SystemToStl(id.ToString());
-        "CREATE TABLE " + ID + "(col1 datatype, PRIMARY KEY(хотя бы одна колонка));"
-
-        string sql3 = "INSERT INTO [отзывы] ([ученик], [предмет], [учитель], [отзыв]) VALUES ('";
-        sql3 += ID2 + "', '" + SystemToStl(this->comboBoxsubjects->Text) + "', '" + ID + "', '" + SystemToStl(this->textBoxrevt->Text) + "');";
-        String^ comstr3 = gcnew String(sql3.c_str());
-        OleDbCommand^ com3 = gcnew OleDbCommand(comstr3, conn);
-        dbreader = com3->ExecuteReader();
-        dbreader->Close();
-        */
 
         parent->Show();
         this->Close();

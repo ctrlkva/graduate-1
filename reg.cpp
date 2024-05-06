@@ -21,16 +21,7 @@ namespace kursme {
 
 	string logged;
 
-
 	extern string SystemToStl(String^ s);
-	/*
-	string SystemToStl(String^ s)
-	{
-		using namespace Runtime::InteropServices;
-		const char* ptr = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-		return string(ptr);
-	}*/
-
 
 	void reg::data() {
 		loginy = SystemToStl(this->textBoxreglogin->Text);
@@ -128,7 +119,6 @@ namespace kursme {
 							f = gcnew tmenu(this);
 							f->Show();
 							this->Hide();
-							//conn->Close();
 							logged = "no";
 
 						data();
@@ -173,8 +163,6 @@ namespace kursme {
 	}
 	System::Void reg::reg_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		conn->Close();
-		//parent->Close();
-		//this->Close();
 	}
 		   
 }

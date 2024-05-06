@@ -36,23 +36,12 @@ namespace kursme {
 	extern string logged;
 
 	extern string SystemToStl(String^ s);
-
-	/*
-	string SystemToStl(String^ s)
-	{
-		using namespace Runtime::InteropServices;
-		const char* ptr = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-		return string(ptr);
-	}*/
-
-	
 	System::Void tmenu::buttonTprofile_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		tprofile^ f;
 		f = gcnew tprofile(this);
 		f->Show();
 		this->Hide();
-
 	}
 	
 	
@@ -104,21 +93,17 @@ namespace kursme {
 			   trevmenu^ f;
 			   f = gcnew trevmenu(this);
 			   f->Show();
-			   //conn->Close();
 		   }
 		   else if ((who) == "родитель")
 		   {
 			   rrev^ f;
 			   f = gcnew rrev(this);
 			   f->Show();
-			   //conn->Close();
 		   }
 		   this->Hide();
 	   }
 	   System::Void tmenu::tmenu_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		   conn->Close();
-		   //this->Close();
-		   //parent->Close();
 	   }
 
 System::Void tmenu::tmenu_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -183,7 +168,6 @@ System::Void tmenu::buttonTreview_HelpRequested(System::Object^ sender, System::
 		f = gcnew shed(this);
 		f->Show();
 		this->Hide();
-		//conn->Close();
 	}
 	System::Void tmenu::buttonExit_Click(System::Object^ sender, System::EventArgs^ e) {
 		conn->Close();

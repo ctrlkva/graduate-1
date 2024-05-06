@@ -180,8 +180,6 @@ namespace kursme {
 
 	System::Void tprofile::tprofile_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		conn->Close();
-		//this->Close();
-		//parent->Close();
 	}
 
 	System::Void tprofile::buttonproftsave_Click(System::Object^ sender, System::EventArgs^ e) {

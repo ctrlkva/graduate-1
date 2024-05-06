@@ -55,8 +55,6 @@ namespace kursme {
 	}
 	System::Void trev::trev_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		conn->Close();
-		//parent->Close();
-		//this->Close();
 	}
 	System::Void trev::buttonrevsavepanelback_Click(System::Object^ sender, System::EventArgs^ e) {
 		conn->Close();
@@ -84,10 +82,9 @@ namespace kursme {
 			id2 = safe_cast<int>(dbreader->GetValue(0));
 		}
 		dbreader->Close();
+
 		string ID2 = SystemToStl(id2.ToString());
 		string ID = SystemToStl(id.ToString());
-		///
-
 		string sql3 = "INSERT INTO [отзывы] ([ученик], [предмет], [учитель], [отзыв]) VALUES ('";
 		sql3 += ID2 + "', '" + SystemToStl(this->comboBoxsubjects->Text) + "', '" + ID + "', '" + SystemToStl(this->textBoxrevt->Text) + "');";
 		String^ comstr3 = gcnew String(sql3.c_str());

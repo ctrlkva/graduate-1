@@ -29,36 +29,6 @@ namespace kursme {
 	extern void counter(int count, OleDbConnection^ conn);
 	extern string SystemToStl(String^ s);
 
-	/*
-	string SystemToStl(String^ s)
-	{
-		using namespace Runtime::InteropServices;
-		const char* ptr = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-		return string(ptr);
-	}*/
-
-	/*
-	void rrev::counter(int count, OleDbConnection^ conn)
-	{
-		int id;
-		if (logged == "no")
-		{
-			id = idy;
-		}
-		else
-		{
-			id = idx;
-		}
-		string ID = SystemToStl(id.ToString());
-		count += 1;
-		string co = SystemToStl(count.ToString());
-		string sql3;
-		sql3 += "UPDATE [пользователи] SET [входы] = '" + co + "' WHERE [Код] = " + ID + ";";
-		String^ comstr3 = gcnew String(sql3.c_str());
-		OleDbCommand^ com3 = gcnew OleDbCommand(comstr3, conn);
-		dbreader = com3->ExecuteReader();
-		dbreader->Close();
-	}*/
 	std::vector<std::string> SplitSentenceIntoWords(std::string sentence) {
 		std::vector<std::string> words;
 		std::string word;
@@ -89,14 +59,14 @@ namespace kursme {
 			subjectr = SystemToStl(comboBoxfindsubjectst->Text);
 			string selectedrev = SystemToStl(comboBoxfindnumbert->Text);
 
-			std::string sentence = (studentr);
 			// Разделение предложения на слова
+			std::string sentence = (studentr);
 			std::vector<std::string> words = SplitSentenceIntoWords(sentence);
 			string nam[10]; string nam2; string nam1; int i = 0;
 			for (const auto& word : words) {
 				nam[i++] = word;
 			}
-			//
+
 			string sql = "SELECT `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `пользователи`.`Код` = `отзывы`.`ученик` WHERE `пользователи`.`имя` LIKE '";
 			sql += nam[0] + "' AND `пользователи`.`фамилия` LIKE '" + nam[1]
 				+ "' AND `пользователи`.`кто` LIKE 'ученик"
@@ -120,14 +90,15 @@ namespace kursme {
 			string ID = SystemToStl(id.ToString());
 			studentr = SystemToStl(comboBoxfindstudentst->Text);
 			subjectr = SystemToStl(comboBoxfindsubjectst->Text);
-			std::string sentence = (studentr);
+
 			// Разделение предложения на слова
+			std::string sentence = (studentr);
 			std::vector<std::string> words = SplitSentenceIntoWords(sentence);
 			string nam[10]; string nam2; string nam1; int i = 0;
 			for (const auto& word : words) {
 				nam[i++] = word;
 			}
-			//
+			
 			string sql = "SELECT `отзывы`.`Код`, `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `пользователи`.`Код` = `отзывы`.`ученик` WHERE `пользователи`.`имя` LIKE '";
 			sql += nam[0] + "' AND `пользователи`.`фамилия` LIKE '" + nam[1]
 				+ "' AND `пользователи`.`кто` LIKE 'ученик"
@@ -157,14 +128,15 @@ namespace kursme {
 			   studentt = SystemToStl(comboBoxfindstudentst->Text);
 			   subjectt = SystemToStl(comboBoxfindsubjectst->Text);
 			   string selectedrev = SystemToStl(comboBoxfindnumbert->Text);
-			   std::string sentence = (studentt);
+
 			   // Разделение предложения на слова
+			   std::string sentence = (studentt);
 			   std::vector<std::string> words = SplitSentenceIntoWords(sentence);
 			   string nam[10]; string nam2; string nam1; int i = 0;
 			   for (const auto& word : words) {
 				   nam[i++] = word;
 			   }
-			   ///
+			   
 			   string sql = "SELECT `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `пользователи`.`Код` = `отзывы`.`ученик` WHERE `пользователи`.`имя` LIKE '";
 			   sql += nam[0] + "' AND `пользователи`.`фамилия` LIKE '" + nam[1]
 				   + "' AND `пользователи`.`кто` LIKE 'ученик"
@@ -190,14 +162,15 @@ namespace kursme {
 			   string ID = SystemToStl(id.ToString());
 			   studentt = SystemToStl(comboBoxfindstudentst->Text);
 			   subjectt = SystemToStl(comboBoxfindsubjectst->Text);
-			   std::string sentence = (studentt);
+
 			   // Разделение предложения на слова
+			   std::string sentence = (studentt);
 			   std::vector<std::string> words = SplitSentenceIntoWords(sentence);
 			   string nam[10]; string nam2; string nam1; int i = 0;
 			   for (const auto& word : words) {
 				   nam[i++] = word;
 			   }
-			   //
+			   
 			   string sql = "SELECT `отзывы`.`Код`, `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `пользователи`.`Код` = `отзывы`.`ученик` WHERE `пользователи`.`имя` LIKE '";
 			   sql += nam[0] + "' AND `пользователи`.`фамилия` LIKE '" + nam[1]
 				   + "' AND `пользователи`.`кто` LIKE 'ученик"
@@ -234,10 +207,8 @@ namespace kursme {
 		if ((who) == "учитель")
 		{
 			string ID = SystemToStl(id.ToString());
-
 			string sql = "SELECT `пользователи`.`имя`, `пользователи`.`фамилия` FROM `пользователи` INNER JOIN `отзывы` ON `отзывы`.`ученик` = `пользователи`.`Код` WHERE `пользователи`.`кто` LIKE 'ученик' AND `отзывы`.`учитель` LIKE '";
 			sql += ID + "';";
-			//string sql = "SELECT * FROM `пользователи` WHERE `кто` = 'ученик';";
 			String^ comstr = gcnew String(sql.c_str());
 			OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
 			dbreader = com->ExecuteReader();
@@ -312,7 +283,6 @@ namespace kursme {
 	}
 	System::Void rrev::rrev_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		conn->Close();
-		//parent->Close();
 	}
 	System::Void rrev::comboBoxfindstudentst_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		
