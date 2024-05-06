@@ -1,10 +1,49 @@
 #pragma once
+#include "log.h"
+#include "reg.h"
+#include "rrev.h"
+#include "trev.h"
 
 #include <Windows.h>
 #include <vector>
 #include <string>
 using std::string;
 using namespace System::Data::OleDb;
+
+
+extern int idx;
+extern string loginx;
+extern string passx;
+extern string namex;
+extern string name2x;
+extern string name3x;
+extern string discordx;
+extern string phonex;
+extern string vkx;
+extern string offlinex;
+extern string onlinex;
+extern int moneyx;
+extern string whox;
+extern int hoursx;
+extern int countx;
+
+extern int idy;
+extern string loginy;
+extern string passy;
+extern string namey;
+extern string name2y;
+extern string name3y;
+extern string discordy;
+extern string phoney;
+extern string vky;
+extern string offliney;
+extern string onliney;
+extern int moneyy;
+extern string whoy;
+extern int hoursy;
+extern int county;
+
+extern string logged;
 
 namespace kursme {
 
@@ -104,6 +143,7 @@ namespace kursme {
 			this->buttonfindrevpanel->TabIndex = 13;
 			this->buttonfindrevpanel->Text = L"Найти";
 			this->buttonfindrevpanel->UseVisualStyleBackColor = true;
+			this->buttonfindrevpanel->Click += gcnew System::EventHandler(this, &trevmenu::buttonfindrevpanel_Click);
 			// 
 			// label47
 			// 
@@ -129,6 +169,7 @@ namespace kursme {
 			this->buttonrevsavepanel->TabIndex = 12;
 			this->buttonrevsavepanel->Text = L"Написать";
 			this->buttonrevsavepanel->UseVisualStyleBackColor = true;
+			this->buttonrevsavepanel->Click += gcnew System::EventHandler(this, &trevmenu::buttonrevsavepanel_Click);
 			// 
 			// buttonrevtback
 			// 
@@ -147,6 +188,7 @@ namespace kursme {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(324, 552);
+			this->ControlBox = false;
 			this->Controls->Add(this->panelrevt);
 			this->Name = L"trevmenu";
 			this->Text = L"Отзывы";
@@ -157,17 +199,15 @@ namespace kursme {
 
 		}
 #pragma endregion
-	String^ connstr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = bd.accdb";
-	OleDbConnection^ conn = gcnew OleDbConnection(connstr);
-	OleDbDataReader^ dbreader;
+
+		String^ connstr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = bd.accdb";
+		OleDbConnection^ conn = gcnew OleDbConnection(connstr);
+		OleDbDataReader^ dbreader;
+
 	private: System::Void buttonrevtback_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void trevmenu_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		//log^ f1 = gcnew log();
-		//f1->conn->Close();
-		conn->Close();
-	}
-	private: System::Void trevmenu_Load(System::Object^ sender, System::EventArgs^ e) {
-		conn->Open();
-	}
+	private: System::Void trevmenu_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+	private: System::Void trevmenu_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonrevsavepanel_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonfindrevpanel_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

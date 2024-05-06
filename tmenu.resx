@@ -1021,6 +1021,9 @@
         iLgf2hiIJB/aeIi4H9oYiLgf2hiIuB/aGIi4H9oYiCQf2nin9z/yv+vptnW1dD0+AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="buttonmenutback.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA4QAAAMIBAMAAABiEjarAAAABGdBTUEAALGPC/xhBQAAABVQTFRF5ubm
@@ -1191,10 +1194,4 @@
         f435f/IDgXgNoMxPAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

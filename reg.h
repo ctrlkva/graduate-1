@@ -1,10 +1,33 @@
 #pragma once
 
+#include "log.h"
+#include "tmenu.h"
+//#include "rmenu.h"
+//#include "smenu.h"
 #include <Windows.h>
 #include <vector>
 #include <string>
 using std::string;
 using namespace System::Data::OleDb;
+
+/*
+ int idy;
+ string loginy;
+ string passy;
+ string namey;
+ string name2y;
+ string name3y;
+ string discordy;
+ string phoney;
+ string vky;
+ string offliney;
+ string onliney;
+ int moneyy;
+ string whoy;
+ int hoursy;
+ int county;
+ string logged;
+ */
 
 namespace kursme {
 
@@ -254,56 +277,17 @@ namespace kursme {
 
 		}
 #pragma endregion
+
+		
+		
 		String^ connstr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = bd.accdb";
 		OleDbConnection^ conn = gcnew OleDbConnection(connstr);
 		OleDbDataReader^ dbreader;
-		string SystemToStl(String^ s)
-		{
-			using namespace Runtime::InteropServices;
-			const char* ptr = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-			return string(ptr);
-		}
+		void data();
 
-		int id;
-		String^ login;
-		String^ pass;
-		String^ name;
-		String^ name2;
-		String^ name3;
-		String^ discord;
-		String^ phone;
-		String^ vk;
-		String^ offline;
-		String^ online;
-		int money;
-		String^ who;
-		int hours;
-		int count;
-
-		void counter(int count, OleDbConnection^ conn)
-		{
-			string ID = SystemToStl(id.ToString());
-			count += 1;
-			string co = SystemToStl(count.ToString());
-			string sql3;
-			sql3 += "UPDATE [пользователи] SET [входы] = '" + co + "' WHERE [Код] = " + ID + ";";
-			String^ comstr3 = gcnew String(sql3.c_str());
-			OleDbCommand^ com3 = gcnew OleDbCommand(comstr3, conn);
-			OleDbDataReader^ dbreader = com3->ExecuteReader();
-			dbreader->Close();
-		}
-		private: System::Void buttonregback_Click(System::Object^ sender, System::EventArgs^ e);
-		private: System::Void buttonreglogin_Click(System::Object^ sender, System::EventArgs^ e);
-		//private: System::Void reg_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
-		private: System::Void reg_Load(System::Object^ sender, System::EventArgs^ e) {
-			conn->Open();
-		}
-	   
-		private: System::Void reg_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-			
-			//log^ f1 = gcnew log();
-			//f1->conn->Close();
-			conn->Close();
-		}
+	private: System::Void reg_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+	private: System::Void reg_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonreglogin_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonregback_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

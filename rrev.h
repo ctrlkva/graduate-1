@@ -1,4 +1,5 @@
 #pragma once
+#include "tmenu.h"
 
 #include <Windows.h>
 #include <vector>
@@ -104,7 +105,6 @@ namespace kursme {
 			this->panelrevfindt->Name = L"panelrevfindt";
 			this->panelrevfindt->Size = System::Drawing::Size(324, 506);
 			this->panelrevfindt->TabIndex = 24;
-			this->panelrevfindt->Visible = false;
 			// 
 			// comboBoxfindnumbert
 			// 
@@ -219,6 +219,7 @@ namespace kursme {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(324, 552);
+			this->ControlBox = false;
 			this->Controls->Add(this->panelrevfindt);
 			this->Name = L"rrev";
 			this->Text = L"Отзывы";
@@ -230,311 +231,19 @@ namespace kursme {
 
 		}
 #pragma endregion
+
 		String^ connstr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = bd.accdb";
 		OleDbConnection^ conn = gcnew OleDbConnection(connstr);
 		OleDbDataReader^ dbreader;
-		string SystemToStl(String^ s)
-		{
-			using namespace Runtime::InteropServices;
-			const char* ptr = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-			return string(ptr);
-		}
 
-		int id;
-		String^ login;
-		String^ pass;
-		String^ name;
-		String^ name2;
-		String^ name3;
-		String^ discord;
-		String^ phone;
-		String^ vk;
-		String^ offline;
-		String^ online;
-		int money;
-		String^ who;
-		int hours;
-		int count;
-
-		void counter(int count, OleDbConnection^ conn)
-		{
-			string ID = SystemToStl(id.ToString());
-			count += 1;
-			string co = SystemToStl(count.ToString());
-			string sql3;
-			sql3 += "UPDATE [пользователи] SET [входы] = '" + co + "' WHERE [Код] = " + ID + ";";
-			String^ comstr3 = gcnew String(sql3.c_str());
-			OleDbCommand^ com3 = gcnew OleDbCommand(comstr3, conn);
-			OleDbDataReader^ dbreader = com3->ExecuteReader();
-			dbreader->Close();
-		}
-
-	private: System::Void rrev_Load(System::Object^ sender, System::EventArgs^ e) {
-		conn->Open();
-	}
-	private: System::Void rrev_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		conn->Close();
-	}
+	private: System::Void rrev_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void rrev_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 	private: System::Void buttonrevfindpanelback_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void comboBoxfindstudentst_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void comboBoxfindsubjectst_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void comboBoxfindnumbert_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 
-	String^ numbert;  String^ studentt; String^ subjectt; int x = 0; int z = 0;
-	String^ numberr;  String^ studentr; String^ subjectr; int a = 0; int b = 0;
-
-	private: System::Void comboBoxfindstudentst_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		
-		string sql = "SELECT `кто` FROM `пользователи` WHERE `логин` LIKE '";
-		String^ comstr = gcnew String(sql.c_str());
-		OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-		OleDbDataReader^ dbreader = com->ExecuteReader();
-		while (dbreader->Read())
-		{
-			who = dbreader->GetString(0);
-		}
-		dbreader->Close();
-		if (SystemToStl(who) == "учитель")
-		{
-			if (comboBoxfindstudentst->Text != "" && comboBoxfindsubjectst->Text != "")
-			{
-				findt();
-			}
-		}
-		else if (SystemToStl(who) == "родитель")
-		{
-			if (comboBoxfindstudentst->Text != "" && comboBoxfindsubjectst->Text != "")
-			{
-				findr();
-			}
-		}
-	}
-
-		   void findt()
-		   {
-			   int number[10];
-			   if (z == 3)
-			   {
-				   string ID = SystemToStl(id.ToString());
-				   studentt = comboBoxfindstudentst->Text;
-				   subjectt = comboBoxfindsubjectst->Text;
-				   //numbert = comboBoxfindnumbert->Text;
-				   //int two = Int32::Parse(comboBoxfindnumbert->Text);
-				   //int numbert = two - 1;
-				   //int selectednum = number[numbert];
-				   string selectedrev = SystemToStl(comboBoxfindnumbert->Text);
-
-				   std::string sentence = SystemToStl(studentt);
-				   // Разделение предложения на слова
-				   std::vector<std::string> words = SplitSentenceIntoWords(sentence);
-				   string nam[10]; string nam2; string nam1; int i = 0;
-				   for (const auto& word : words) {
-					   nam[i++] = word;
-				   }
-				   ///
-				   string sql = "SELECT `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `пользователи`.`Код` = `отзывы`.`ученик` WHERE `пользователи`.`имя` LIKE '";
-				   sql += nam[0] + "' AND `пользователи`.`фамилия` LIKE '" + nam[1]
-					   + "' AND `пользователи`.`кто` LIKE 'ученик"
-					   + "' AND `отзывы`.`предмет` LIKE '" + SystemToStl(subjectt)
-					   + "' AND `отзывы`.`Код` LIKE " + selectedrev
-					   + " AND `отзывы`.`учитель` LIKE '" + ID + "';";
-				   String^ comstr = gcnew String(sql.c_str());
-				   OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-				   dbreader = com->ExecuteReader();
-				   i = 0; string rev;
-				   while (dbreader->Read())
-				   {
-					   rev = SystemToStl(dbreader->GetString(0));
-				   }
-				   dbreader->Close();
-
-				   textBoxfindrevt->Text = gcnew String(rev.c_str());
-				   z = 0;
-
-				   //String^ v = selectednum.ToString();
-				   //MessageBox::Show(v, "Ошибка", MessageBoxButtons::OK);
-			   }
-			   else
-			   {
-				   comboBoxfindnumbert->Items->Clear();
-				   string ID = SystemToStl(id.ToString());
-				   studentt = comboBoxfindstudentst->Text;
-				   subjectt = comboBoxfindsubjectst->Text;
-				   std::string sentence = SystemToStl(studentt);
-				   // Разделение предложения на слова
-				   std::vector<std::string> words = SplitSentenceIntoWords(sentence);
-				   string nam[10]; string nam2; string nam1; int i = 0;
-				   for (const auto& word : words) {
-					   nam[i++] = word;
-				   }
-				   ///
-				   //string sql = "SELECT `отзывы`.`Код`, `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `отзывы`.`ученик` = `пользователи`.`Код`";
-
-				   string sql = "SELECT `отзывы`.`Код`, `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `пользователи`.`Код` = `отзывы`.`ученик` WHERE `пользователи`.`имя` LIKE '";
-				   sql += nam[0] + "' AND `пользователи`.`фамилия` LIKE '" + nam[1]
-					   + "' AND `пользователи`.`кто` LIKE 'ученик"
-					   + "' AND `отзывы`.`предмет` LIKE '" + SystemToStl(subjectt)
-					   + "' AND `отзывы`.`учитель` LIKE '" + ID + "';";
-
-				   String^ comstr = gcnew String(sql.c_str());
-				   OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-				   dbreader = com->ExecuteReader();
-
-				   i = 0; string rev[10];
-				   while (dbreader->Read())
-				   {
-					   //number[i] = safe_cast<int>(dbreader->GetValue(0));
-					   //comboBoxfindnumbert->Items->Insert(i, dbreader->GetValue(0));
-					   number[i] = safe_cast<int>(dbreader->GetValue(0));
-					   comboBoxfindnumbert->Items->Insert(i, dbreader->GetValue(0));
-					   rev[i] = SystemToStl(dbreader->GetString(1));
-					   i++;
-				   }
-				   dbreader->Close();
-
-				   textBoxfindrevt->Text = gcnew String(rev[0].c_str());
-			   }
-		   }
-	private: System::Void comboBoxfindsubjectst_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		
-		string sql = "SELECT `кто` FROM `пользователи` WHERE `логин` LIKE '";
-		String^ comstr = gcnew String(sql.c_str());
-		OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-		OleDbDataReader^ dbreader = com->ExecuteReader();
-		while (dbreader->Read())
-		{
-			who = dbreader->GetString(0);
-		}
-		dbreader->Close();
-		if (SystemToStl(who) == "учитель")
-		{
-			if (comboBoxfindstudentst->Text != "" && comboBoxfindsubjectst->Text != "")
-			{
-				findt();
-			}
-		}
-		else if (SystemToStl(who) == "родитель")
-		{
-			if (comboBoxfindstudentst->Text != "" && comboBoxfindsubjectst->Text != "")
-			{
-				findr();
-			}
-		}
-	}
-	private: System::Void comboBoxfindnumbert_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		z = 3; b = 3;
-		string sql = "SELECT `кто` FROM `пользователи` WHERE `логин` LIKE '";
-		String^ comstr = gcnew String(sql.c_str());
-		OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-		OleDbDataReader^ dbreader = com->ExecuteReader();
-		while (dbreader->Read())
-		{
-			who = dbreader->GetString(0);
-		}
-		dbreader->Close();
-		if (SystemToStl(who) == "учитель")
-		{
-			if (comboBoxfindstudentst->Text != "" && comboBoxfindsubjectst->Text != "")
-			{
-				findt();
-			}
-		}
-		else if (SystemToStl(who) == "родитель")
-		{
-			if (comboBoxfindstudentst->Text != "" && comboBoxfindsubjectst->Text != "")
-			{
-				findr();
-			}
-		}
-	}
-		   std::vector<std::string> SplitSentenceIntoWords(std::string sentence) {
-			   std::vector<std::string> words;
-			   std::string word;
-			   for (char c : sentence) {
-				   if (c == ' ' || c == ',' || c == '.' || c == '\n' || c == '-') {
-					   if (!word.empty()) {
-						   words.push_back(word);
-						   word.clear();
-					   }
-				   }
-				   else {
-					   word += c;
-				   }
-			   }
-			   if (!word.empty()) {
-				   words.push_back(word);
-			   }
-			   return words;
-		   }
-
-		   void findr()
-		   {
-			   int number[10];
-			   if (b == 3)
-			   {
-				   string ID = SystemToStl(id.ToString());
-				   studentr = comboBoxfindstudentst->Text;
-				   subjectr = comboBoxfindsubjectst->Text;
-				   string selectedrev = SystemToStl(comboBoxfindnumbert->Text);
-
-				   std::string sentence = SystemToStl(studentr);
-				   // Разделение предложения на слова
-				   std::vector<std::string> words = SplitSentenceIntoWords(sentence);
-				   string nam[10]; string nam2; string nam1; int i = 0;
-				   for (const auto& word : words) {
-					   nam[i++] = word;
-				   }
-				   string sql = "SELECT `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `пользователи`.`Код` = `отзывы`.`ученик` WHERE `пользователи`.`имя` LIKE '";
-				   sql += nam[0] + "' AND `пользователи`.`фамилия` LIKE '" + nam[1]
-					   + "' AND `пользователи`.`кто` LIKE 'ученик"
-					   + "' AND `отзывы`.`предмет` LIKE '" + SystemToStl(subjectr)
-					   + "' AND `отзывы`.`Код` LIKE " + selectedrev + ";";
-				   String^ comstr = gcnew String(sql.c_str());
-				   OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-				   dbreader = com->ExecuteReader();
-				   i = 0; string rev;
-				   while (dbreader->Read())
-				   {
-					   rev = SystemToStl(dbreader->GetString(0));
-				   }
-				   dbreader->Close();
-
-				   textBoxfindrevt->Text = gcnew String(rev.c_str());
-				   b = 0;
-
-			   }
-			   else
-			   {
-				   comboBoxfindnumbert->Items->Clear();
-				   string ID = SystemToStl(id.ToString());
-				   studentr = comboBoxfindstudentst->Text;
-				   subjectr = comboBoxfindsubjectst->Text;
-				   std::string sentence = SystemToStl(studentr);
-				   // Разделение предложения на слова
-				   std::vector<std::string> words = SplitSentenceIntoWords(sentence);
-				   string nam[10]; string nam2; string nam1; int i = 0;
-				   for (const auto& word : words) {
-					   nam[i++] = word;
-				   }
-				   string sql = "SELECT `отзывы`.`Код`, `отзывы`.`отзыв` FROM `отзывы` INNER JOIN `пользователи` ON `пользователи`.`Код` = `отзывы`.`ученик` WHERE `пользователи`.`имя` LIKE '";
-				   sql += nam[0] + "' AND `пользователи`.`фамилия` LIKE '" + nam[1]
-					   + "' AND `пользователи`.`кто` LIKE 'ученик"
-					   + "' AND `отзывы`.`предмет` LIKE '" + SystemToStl(subjectr) + "';";
-
-				   String^ comstr = gcnew String(sql.c_str());
-				   OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-				   dbreader = com->ExecuteReader();
-
-				   i = 0; string rev[10];
-				   while (dbreader->Read())
-				   {
-					   number[i] = safe_cast<int>(dbreader->GetValue(0));
-					   comboBoxfindnumbert->Items->Insert(i, dbreader->GetValue(0));
-					   rev[i] = SystemToStl(dbreader->GetString(1));
-					   i++;
-				   }
-				   dbreader->Close();
-
-				   textBoxfindrevt->Text = gcnew String(rev[0].c_str());
-			   }
-		   }
-
+	void findr();
+	void findt();
 };
 }

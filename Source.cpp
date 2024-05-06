@@ -1,7 +1,7 @@
 #pragma once
 #include "log.h"
 #include <Windows.h>
-#include "trevmenu.h"
+#include "tprofile.h"
 
 using namespace kursme;
 

@@ -1,12 +1,36 @@
 #pragma once
 
+#include "reg.h"
+//#include "rmenu.h"
+#include "tmenu.h"
+//#include "smenu.h"
+
 #include <Windows.h>
 #include <vector>
 #include <string>
 using std::string;
 using namespace System::Data::OleDb;
 
+/*
+ int idx;
+ string loginx;
+ string passx;
+ string namex;
+ string name2x;
+ string name3x;
+ string discordx;
+ string phonex;
+ string vkx;
+ string offlinex;
+ string onlinex;
+ int moneyx;
+ string whox;
+ int hoursx;
+ int countx;
+ */
+
 namespace kursme {
+
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -52,11 +76,13 @@ namespace kursme {
 	private: System::Windows::Forms::TextBox^ textBoxpass;
 	private: System::Windows::Forms::Label^ label34;
 
+
+
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -215,53 +241,31 @@ namespace kursme {
 
 		}
 #pragma endregion
-		String^ connstr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = bd.accdb";
-		public: OleDbConnection^ conn = gcnew OleDbConnection(connstr);
-		OleDbDataReader^ dbreader;
-		string SystemToStl(String^ s)
-		{
-			using namespace Runtime::InteropServices;
-			const char* ptr = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-			return string(ptr);
-		}
 
-		int id;
-		String^ login;
-		String^ pass;
-		String^ name;
-		String^ name2;
-		String^ name3;
-		String^ discord;
-		String^ phone;
-		String^ vk;
-		String^ offline;
-		String^ online;
-		int money;
-		String^ who;
-		int hours;
-		int count;
+	String^ connstr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = bd.accdb";
+	OleDbConnection^ conn = gcnew OleDbConnection(connstr);
+	OleDbDataReader^ dbreader;
 
-		void counter(int count, OleDbConnection^ conn)
-		{
-			string ID = SystemToStl(id.ToString());
-			count += 1;
-			string co = SystemToStl(count.ToString());
-			string sql3;
-			sql3 += "UPDATE [пользователи] SET [входы] = '" + co + "' WHERE [Код] = " + ID + ";";
-			String^ comstr3 = gcnew String(sql3.c_str());
-			OleDbCommand^ com3 = gcnew OleDbCommand(comstr3, conn);
-			OleDbDataReader^ dbreader = com3->ExecuteReader();
-			dbreader->Close();
-		}
-		private: System::Void buttonlogin_Click(System::Object^ sender, System::EventArgs^);
-		private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e);
-		//private: System::Void log_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
-	private: System::Void log_Load(System::Object^ sender, System::EventArgs^ e) {
-		conn->Open();
-	}
-	private: System::Void log_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
+	private: System::Void log_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+	private: System::Void log_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonlogin_Click(System::Object^ sender, System::EventArgs^);
+	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e);
+	void data(); 
+
+	/*
+	void counter(int count, OleDbConnection^ conn);
+	void counter(int count, OleDbConnection^ conn)
 	{
-		conn->Close();
+		string ID = SystemToStl(idx.ToString());
+		count += 1;
+		string co = SystemToStl(count.ToString());
+		string sql3;
+		sql3 += "UPDATE [пользователи] SET [входы] = '" + co + "' WHERE [Код] = " + ID + ";";
+		String^ comstr3 = gcnew String(sql3.c_str());
+		OleDbCommand^ com3 = gcnew OleDbCommand(comstr3, conn);
+		dbreader = com3->ExecuteReader();
+		dbreader->Close();
 	}
+	*/
 };
 }

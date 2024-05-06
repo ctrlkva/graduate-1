@@ -115,8 +115,11 @@
     <ClCompile Include="log.cpp" />
     <ClCompile Include="reg.cpp" />
     <ClCompile Include="rrev.cpp" />
+    <ClCompile Include="shed.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="tmenu.cpp" />
+    <ClCompile Include="tprofile.cpp" />
+    <ClCompile Include="trev.cpp" />
     <ClCompile Include="trevmenu.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +140,16 @@
     <ClInclude Include="rrev.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="shed.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="tmenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="tprofile.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="trev.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="trevmenu.h">
@@ -154,8 +166,17 @@
     <EmbeddedResource Include="rrev.resx">
       <DependentUpon>rrev.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="shed.resx">
+      <DependentUpon>shed.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="tmenu.resx">
       <DependentUpon>tmenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tprofile.resx">
+      <DependentUpon>tprofile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="trev.resx">
+      <DependentUpon>trev.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="trevmenu.resx">
       <DependentUpon>trevmenu.h</DependentUpon>

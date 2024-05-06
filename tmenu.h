@@ -1,11 +1,18 @@
 #pragma once
 
+#include "log.h"
+#include "reg.h"
+#include "tprofile.h"
+#include "shed.h"
+#include "trevmenu.h"
+#include "rrev.h"
 
 #include <Windows.h>
 #include <vector>
 #include <string>
 using std::string;
 using namespace System::Data::OleDb;
+
 
 namespace kursme {
 
@@ -61,6 +68,7 @@ namespace kursme {
 	private: System::Windows::Forms::Button^ buttonTshed;
 	private: System::Windows::Forms::HelpProvider^ helpProvider1;
 	private: System::Windows::Forms::Form^ parent;
+	private: System::Windows::Forms::Button^ buttonExit;
 
 	private:
 		/// <summary>
@@ -77,13 +85,14 @@ namespace kursme {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(tmenu::typeid));
 			this->panelmenut = (gcnew System::Windows::Forms::Panel());
+			this->buttonExit = (gcnew System::Windows::Forms::Button());
 			this->buttonThelp = (gcnew System::Windows::Forms::Button());
 			this->buttonTchats = (gcnew System::Windows::Forms::Button());
+			this->buttonTshed = (gcnew System::Windows::Forms::Button());
 			this->buttonmenutback = (gcnew System::Windows::Forms::Button());
 			this->buttonTreview = (gcnew System::Windows::Forms::Button());
-			this->buttonTprofile = (gcnew System::Windows::Forms::Button());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->buttonTshed = (gcnew System::Windows::Forms::Button());
+			this->buttonTprofile = (gcnew System::Windows::Forms::Button());
 			this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
 			this->panelmenut->SuspendLayout();
 			this->SuspendLayout();
@@ -91,16 +100,32 @@ namespace kursme {
 			// panelmenut
 			// 
 			this->panelmenut->Controls->Add(this->buttonThelp);
-			this->panelmenut->Controls->Add(this->buttonTchats);
+			this->panelmenut->Controls->Add(this->buttonTshed);
 			this->panelmenut->Controls->Add(this->buttonmenutback);
 			this->panelmenut->Controls->Add(this->buttonTreview);
-			this->panelmenut->Controls->Add(this->buttonTprofile);
 			this->panelmenut->Controls->Add(this->label9);
-			this->panelmenut->Controls->Add(this->buttonTshed);
+			this->panelmenut->Controls->Add(this->buttonTprofile);
+			this->panelmenut->Controls->Add(this->buttonExit);
+			this->panelmenut->Controls->Add(this->buttonTchats);
 			this->panelmenut->Location = System::Drawing::Point(0, 1);
 			this->panelmenut->Name = L"panelmenut";
-			this->panelmenut->Size = System::Drawing::Size(324, 442);
+			this->panelmenut->Size = System::Drawing::Size(324, 553);
 			this->panelmenut->TabIndex = 13;
+			// 
+			// buttonExit
+			// 
+			this->buttonExit->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->buttonExit->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonExit->Location = System::Drawing::Point(58, 373);
+			this->buttonExit->Name = L"buttonExit";
+			this->buttonExit->Size = System::Drawing::Size(195, 43);
+			this->buttonExit->TabIndex = 14;
+			this->buttonExit->Text = L"Выйти";
+			this->buttonExit->UseVisualStyleBackColor = true;
+			this->buttonExit->Click += gcnew System::EventHandler(this, &tmenu::buttonExit_Click);
 			// 
 			// buttonThelp
 			// 
@@ -121,12 +146,31 @@ namespace kursme {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->buttonTchats->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->buttonTchats->Location = System::Drawing::Point(62, 375);
+			this->buttonTchats->Location = System::Drawing::Point(58, 373);
 			this->buttonTchats->Name = L"buttonTchats";
 			this->buttonTchats->Size = System::Drawing::Size(195, 43);
 			this->buttonTchats->TabIndex = 9;
 			this->buttonTchats->Text = L"Чаты";
 			this->buttonTchats->UseVisualStyleBackColor = true;
+			this->buttonTchats->Visible = false;
+			// 
+			// buttonTshed
+			// 
+			this->buttonTshed->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->buttonTshed->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->helpProvider1->SetHelpKeyword(this->buttonTshed, L"shcedule.htm");
+			this->helpProvider1->SetHelpNavigator(this->buttonTshed, System::Windows::Forms::HelpNavigator::Topic);
+			this->buttonTshed->Location = System::Drawing::Point(58, 258);
+			this->buttonTshed->Name = L"buttonTshed";
+			this->helpProvider1->SetShowHelp(this->buttonTshed, true);
+			this->buttonTshed->Size = System::Drawing::Size(195, 42);
+			this->buttonTshed->TabIndex = 7;
+			this->buttonTshed->Text = L"Расписание";
+			this->buttonTshed->UseVisualStyleBackColor = true;
+			this->buttonTshed->Click += gcnew System::EventHandler(this, &tmenu::buttonTshed_Click);
 			// 
 			// buttonmenutback
 			// 
@@ -147,7 +191,7 @@ namespace kursme {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->buttonTreview->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->buttonTreview->Location = System::Drawing::Point(62, 317);
+			this->buttonTreview->Location = System::Drawing::Point(58, 315);
 			this->buttonTreview->Name = L"buttonTreview";
 			this->buttonTreview->Size = System::Drawing::Size(195, 42);
 			this->buttonTreview->TabIndex = 8;
@@ -155,23 +199,6 @@ namespace kursme {
 			this->buttonTreview->UseVisualStyleBackColor = true;
 			this->buttonTreview->Click += gcnew System::EventHandler(this, &tmenu::buttonTreview_Click);
 			this->buttonTreview->HelpRequested += gcnew System::Windows::Forms::HelpEventHandler(this, &tmenu::buttonTreview_HelpRequested);
-			// 
-			// buttonTprofile
-			// 
-			this->buttonTprofile->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->buttonTprofile->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->helpProvider1->SetHelpKeyword(this->buttonTprofile, L"profile.htm");
-			this->helpProvider1->SetHelpNavigator(this->buttonTprofile, System::Windows::Forms::HelpNavigator::Topic);
-			this->buttonTprofile->Location = System::Drawing::Point(62, 202);
-			this->buttonTprofile->Name = L"buttonTprofile";
-			this->helpProvider1->SetShowHelp(this->buttonTprofile, true);
-			this->buttonTprofile->Size = System::Drawing::Size(195, 43);
-			this->buttonTprofile->TabIndex = 6;
-			this->buttonTprofile->Text = L"Профиль";
-			this->buttonTprofile->UseVisualStyleBackColor = true;
 			// 
 			// label9
 			// 
@@ -184,22 +211,23 @@ namespace kursme {
 			this->label9->Text = L"Меню";
 			this->label9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// buttonTshed
+			// buttonTprofile
 			// 
-			this->buttonTshed->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->buttonTprofile->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->buttonTshed->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonTprofile->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->helpProvider1->SetHelpKeyword(this->buttonTshed, L"shcedule.htm");
-			this->helpProvider1->SetHelpNavigator(this->buttonTshed, System::Windows::Forms::HelpNavigator::Topic);
-			this->buttonTshed->Location = System::Drawing::Point(62, 260);
-			this->buttonTshed->Name = L"buttonTshed";
-			this->helpProvider1->SetShowHelp(this->buttonTshed, true);
-			this->buttonTshed->Size = System::Drawing::Size(195, 42);
-			this->buttonTshed->TabIndex = 7;
-			this->buttonTshed->Text = L"Расписание";
-			this->buttonTshed->UseVisualStyleBackColor = true;
+			this->helpProvider1->SetHelpKeyword(this->buttonTprofile, L"profile.htm");
+			this->helpProvider1->SetHelpNavigator(this->buttonTprofile, System::Windows::Forms::HelpNavigator::Topic);
+			this->buttonTprofile->Location = System::Drawing::Point(58, 200);
+			this->buttonTprofile->Name = L"buttonTprofile";
+			this->helpProvider1->SetShowHelp(this->buttonTprofile, true);
+			this->buttonTprofile->Size = System::Drawing::Size(195, 43);
+			this->buttonTprofile->TabIndex = 6;
+			this->buttonTprofile->Text = L"Профиль";
+			this->buttonTprofile->UseVisualStyleBackColor = true;
+			this->buttonTprofile->Click += gcnew System::EventHandler(this, &tmenu::buttonTprofile_Click);
 			// 
 			// helpProvider1
 			// 
@@ -210,6 +238,7 @@ namespace kursme {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(323, 553);
+			this->ControlBox = false;
 			this->Controls->Add(this->panelmenut);
 			this->Name = L"tmenu";
 			this->Text = L"Меню";
@@ -220,113 +249,17 @@ namespace kursme {
 
 		}
 #pragma endregion
-		String^ connstr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = bd.accdb";
-		OleDbConnection^ conn = gcnew OleDbConnection(connstr);
-		OleDbDataReader^ dbreader;
-		string SystemToStl(String^ s)
-		{
-			using namespace Runtime::InteropServices;
-			const char* ptr = (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-			return string(ptr);
-		}
+	String^ connstr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = bd.accdb";
+	OleDbConnection^ conn = gcnew OleDbConnection(connstr);
 
-		int id;
-		String^ login;
-		String^ pass;
-		String^ name;
-		String^ name2;
-		String^ name3;
-		String^ discord;
-		String^ phone;
-		String^ vk;
-		String^ offline;
-		String^ online;
-		int money;
-		String^ who;
-		int hours;
-		int count;
-
-		void counter(int count, OleDbConnection^ conn)
-		{
-			string ID = SystemToStl(id.ToString());
-			count += 1;
-			string co = SystemToStl(count.ToString());
-			string sql3;
-			sql3 += "UPDATE [пользователи] SET [входы] = '" + co + "' WHERE [Код] = " + ID + ";";
-			String^ comstr3 = gcnew String(sql3.c_str());
-			OleDbCommand^ com3 = gcnew OleDbCommand(comstr3, conn);
-			OleDbDataReader^ dbreader = com3->ExecuteReader();
-			dbreader->Close();
-		}
-
-	private: System::Void buttonThelp_Click(System::Object^ sender, System::EventArgs^ e) {
-		string sql = "SELECT `кто` FROM `пользователи` WHERE `логин` LIKE '";
-		String^ comstr = gcnew String(sql.c_str());
-		OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-		OleDbDataReader^ dbreader = com->ExecuteReader();
-		while (dbreader->Read())
-		{
-			who = dbreader->GetString(0);
-		}
-		dbreader->Close();
-		if (SystemToStl(who) == "учитель")
-		{
-			Help::ShowHelp(this, "справка.chm", "tmain.htm");
-		}
-		else if (SystemToStl(who) == "ученик")
-		{
-			Help::ShowHelp(this, "справка.chm", "smain.htm");
-		}
-		else if (SystemToStl(who) == "родитель")
-		{
-			Help::ShowHelp(this, "справка.chm", "rmain.htm");
-		}
-	}
-	private: System::Void buttonmenutback_Click(System::Object^ sender, System::EventArgs^ e);
-	//private: System::Void buttonTprofile_Click(System::Object^ sender, System::EventArgs^ e);
-	//private: System::Void buttonTshed_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonTshed_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonTreview_HelpRequested(System::Object^ sender, System::Windows::Forms::HelpEventArgs^ hlpevent);
+	private: System::Void tmenu_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void tmenu_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 	private: System::Void buttonTreview_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void tmenu_Load(System::Object^ sender, System::EventArgs^ e) {
-		conn->Open();
-
-		string sql = "SELECT `кто` FROM `пользователи` WHERE `логин` LIKE '";
-		String^ comstr = gcnew String(sql.c_str());
-		OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-		OleDbDataReader^ dbreader = com->ExecuteReader();
-		while (dbreader->Read())
-		{
-			who = dbreader->GetString(0);
-		}
-		dbreader->Close();
-		if (SystemToStl(who) == "ученик")
-		{
-			buttonTreview->Visible = false;
-		}
-	}
-	private: System::Void tmenu_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		//log^ f1 = gcnew log();
-		//f1->conn->Close();
-		conn->Close();
-	}
-	
-	private: System::Void buttonTreview_HelpRequested(System::Object^ sender, System::Windows::Forms::HelpEventArgs^ hlpevent) {
-		string sql = "SELECT `кто` FROM `пользователи` WHERE `логин` LIKE '";
-		String^ comstr = gcnew String(sql.c_str());
-		OleDbCommand^ com = gcnew OleDbCommand(comstr, conn);
-		OleDbDataReader^ dbreader = com->ExecuteReader();
-		while (dbreader->Read())
-		{
-			who = dbreader->GetString(0);
-		}
-		dbreader->Close();
-		if (SystemToStl(who) == "учитель")
-		{
-			Help::ShowHelp(this, "справка.chm", "treview.htm");
-		}
-		else if (SystemToStl(who) == "родитель")
-		{
-			Help::ShowHelp(this, "справка.chm", "rreview.htm");
-		}
-	}
+	private: System::Void buttonmenutback_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonThelp_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonTprofile_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void buttonExit_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
