@@ -55,49 +55,51 @@ namespace kursme {
         string ID = SystemToStl(id.ToString());
         //std::string line;
         string str = ""; //String^ name;
-        std::ofstream out("schedule"+ID+".txt");
+        std::ofstream out("schedule"+ID+".txt", std::ios_base::trunc);
         if (out.is_open())
         {
+            str = SystemToStl(textBox1->Text);
+            out << str << std::endl;
+        }
+        out.close();
 
-            //str = SystemToStl(textBox1->Text);
-            //out << str << std::endl;
-            
-            for each(Control^ c in panel1->Controls)
+        std::ofstream out1("schedule" + ID + ".txt", std::ios_base::app);
+        if (out1.is_open())
+        {
+            for (int it = 2; it != 85; it++)
             {
-                if (isinst< TextBox^ >(c))
+                str = SystemToStl(this->panel1->Controls["textbox" + it.ToString()]->Text);
+                out1 << str << std::endl;
+            }
+            /*
+            for each (Control ^ c in panel1->Controls)
+            {
+                if ((isinst< TextBox^ >(c)) && (c->Name != "textBox1"))
                 {
                     str = SystemToStl(c->Text);
-                    out << str << std::endl;
+                    out1 << str << std::endl;
                     //str = "";
                 }
             }
-            
-            /*
-            for each (Control ^ c in this->panel1->Controls) {
-                TextBox^ tb = dynamic_cast<TextBox^>(c);                               ///////////не работает
-                if (tb != nullptr)
-                    str = SystemToStl(c->Text);
-                    out << str << std::endl;
-            }
             */
-            /*
-            for (int i = 1; i < 85; i++)
-            {
-                //name = "textBox" + i.ToString();
-                //str = SystemToStl(panel1->Controls[name]->Text);
-
-                //this->Controls[panelshed]->Visible = true;
-                //str = SystemToStl(((this->panelshed->Controls[panel1])->Controls[name])->Text);                      ///////////не работает
-                str = SystemToStl(this->panel1->Controls["textBox" + i.ToString()]->Text);
-                out << str << std::endl;
-                str = "";
-            }
-            */
-            //out << str << std::endl;
         }
-        out.close();
+        out1.close();
+
+
+
+
+        for (int it = 2; it != 85; it++)
+        {
+            str = SystemToStl(this->panel1->Controls["textbox" + it.ToString()]->Text);
+            out1 << str << std::endl;
+        }
+
+
+
+
+
         // запись в бд
-        /* 
+        /*
         string ID = SystemToStl(id.ToString());
         "CREATE TABLE " + ID + "(col1 datatype, PRIMARY KEY(хотя бы одна колонка));"
 
@@ -108,6 +110,7 @@ namespace kursme {
         dbreader = com3->ExecuteReader();
         dbreader->Close();
         */
+
         parent->Show();
         this->Close();
         conn->Close();
