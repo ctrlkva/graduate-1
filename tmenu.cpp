@@ -148,7 +148,7 @@ System::Void tmenu::tmenu_Load(System::Object^ sender, System::EventArgs^ e) {
 	if ((who) == "ученик")
 	{
 		buttonTreview->Visible = false;
-		buttonExit->Location = Point(58, 315);
+		//buttonExit->Location = Point(58, 315);
 		buttonTchats->Location = Point(58, 315);
 	}
 }
@@ -174,6 +174,13 @@ System::Void tmenu::buttonTreview_HelpRequested(System::Object^ sender, System::
 		this->Close();
 		parent->Close();
 	}
+	System::Void tmenu::buttonTprofile_HelpRequested(System::Object^ sender, System::Windows::Forms::HelpEventArgs^ hlpevent) {
 
+		Help::ShowHelp(this, "справка.chm", "profile.htm");
+	}
+	System::Void tmenu::buttonTshed_HelpRequested(System::Object^ sender, System::Windows::Forms::HelpEventArgs^ hlpevent) {
+
+		Help::ShowHelp(this, "справка.chm", "schedule.htm");
+	}
 }
 

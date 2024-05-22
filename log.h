@@ -91,6 +91,7 @@ namespace kursme {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(log::typeid));
 			this->panellogin = (gcnew System::Windows::Forms::Panel());
 			this->label29 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -231,6 +232,7 @@ namespace kursme {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(324, 555);
 			this->Controls->Add(this->panellogin);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"log";
 			this->Text = L"Авторизация";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &log::log_FormClosing);

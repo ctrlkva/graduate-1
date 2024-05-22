@@ -137,6 +137,7 @@
     <ClInclude Include="reg.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="rrev.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -181,6 +182,12 @@
     <EmbeddedResource Include="trevmenu.resx">
       <DependentUpon>trevmenu.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="kursme.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="png.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -267,6 +267,7 @@ namespace kursme {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(325, 553);
 			this->Controls->Add(this->panelreg);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"reg";
 			this->Text = L"Регистрация";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &reg::reg_FormClosing);

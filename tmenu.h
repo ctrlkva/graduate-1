@@ -85,14 +85,14 @@ namespace kursme {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(tmenu::typeid));
 			this->panelmenut = (gcnew System::Windows::Forms::Panel());
-			this->buttonExit = (gcnew System::Windows::Forms::Button());
 			this->buttonThelp = (gcnew System::Windows::Forms::Button());
-			this->buttonTchats = (gcnew System::Windows::Forms::Button());
 			this->buttonTshed = (gcnew System::Windows::Forms::Button());
 			this->buttonmenutback = (gcnew System::Windows::Forms::Button());
 			this->buttonTreview = (gcnew System::Windows::Forms::Button());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->buttonTprofile = (gcnew System::Windows::Forms::Button());
+			this->buttonExit = (gcnew System::Windows::Forms::Button());
+			this->buttonTchats = (gcnew System::Windows::Forms::Button());
 			this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
 			this->panelmenut->SuspendLayout();
 			this->SuspendLayout();
@@ -112,21 +112,6 @@ namespace kursme {
 			this->panelmenut->Size = System::Drawing::Size(324, 553);
 			this->panelmenut->TabIndex = 13;
 			// 
-			// buttonExit
-			// 
-			this->buttonExit->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->buttonExit->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->buttonExit->Location = System::Drawing::Point(58, 373);
-			this->buttonExit->Name = L"buttonExit";
-			this->buttonExit->Size = System::Drawing::Size(195, 43);
-			this->buttonExit->TabIndex = 14;
-			this->buttonExit->Text = L"Выйти";
-			this->buttonExit->UseVisualStyleBackColor = true;
-			this->buttonExit->Click += gcnew System::EventHandler(this, &tmenu::buttonExit_Click);
-			// 
 			// buttonThelp
 			// 
 			this->buttonThelp->BackColor = System::Drawing::SystemColors::Control;
@@ -138,21 +123,6 @@ namespace kursme {
 			this->buttonThelp->TabIndex = 11;
 			this->buttonThelp->UseVisualStyleBackColor = false;
 			this->buttonThelp->Click += gcnew System::EventHandler(this, &tmenu::buttonThelp_Click);
-			// 
-			// buttonTchats
-			// 
-			this->buttonTchats->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->buttonTchats->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->buttonTchats->Location = System::Drawing::Point(58, 373);
-			this->buttonTchats->Name = L"buttonTchats";
-			this->buttonTchats->Size = System::Drawing::Size(195, 43);
-			this->buttonTchats->TabIndex = 9;
-			this->buttonTchats->Text = L"Чаты";
-			this->buttonTchats->UseVisualStyleBackColor = true;
-			this->buttonTchats->Visible = false;
 			// 
 			// buttonTshed
 			// 
@@ -171,17 +141,19 @@ namespace kursme {
 			this->buttonTshed->Text = L"Расписание";
 			this->buttonTshed->UseVisualStyleBackColor = true;
 			this->buttonTshed->Click += gcnew System::EventHandler(this, &tmenu::buttonTshed_Click);
+			this->buttonTshed->HelpRequested += gcnew System::Windows::Forms::HelpEventHandler(this, &tmenu::buttonTshed_HelpRequested);
 			// 
 			// buttonmenutback
 			// 
 			this->buttonmenutback->BackColor = System::Drawing::SystemColors::Control;
 			this->buttonmenutback->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"buttonmenutback.BackgroundImage")));
 			this->buttonmenutback->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->buttonmenutback->Location = System::Drawing::Point(280, 0);
+			this->buttonmenutback->Location = System::Drawing::Point(267, 376);
 			this->buttonmenutback->Name = L"buttonmenutback";
 			this->buttonmenutback->Size = System::Drawing::Size(44, 40);
 			this->buttonmenutback->TabIndex = 10;
 			this->buttonmenutback->UseVisualStyleBackColor = false;
+			this->buttonmenutback->Visible = false;
 			this->buttonmenutback->Click += gcnew System::EventHandler(this, &tmenu::buttonmenutback_Click);
 			// 
 			// buttonTreview
@@ -228,6 +200,40 @@ namespace kursme {
 			this->buttonTprofile->Text = L"Профиль";
 			this->buttonTprofile->UseVisualStyleBackColor = true;
 			this->buttonTprofile->Click += gcnew System::EventHandler(this, &tmenu::buttonTprofile_Click);
+			this->buttonTprofile->HelpRequested += gcnew System::Windows::Forms::HelpEventHandler(this, &tmenu::buttonTprofile_HelpRequested);
+			// 
+			// buttonExit
+			// 
+			this->buttonExit->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->buttonExit->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"buttonExit.BackgroundImage")));
+			this->buttonExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->buttonExit->Font = (gcnew System::Drawing::Font(L"Showcard Gothic", 17.82178F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->buttonExit->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->buttonExit->Location = System::Drawing::Point(280, -1);
+			this->buttonExit->Name = L"buttonExit";
+			this->buttonExit->Size = System::Drawing::Size(44, 40);
+			this->buttonExit->TabIndex = 14;
+			this->buttonExit->Text = L"Х";
+			this->buttonExit->UseVisualStyleBackColor = false;
+			this->buttonExit->Click += gcnew System::EventHandler(this, &tmenu::buttonExit_Click);
+			// 
+			// buttonTchats
+			// 
+			this->buttonTchats->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->buttonTchats->Font = (gcnew System::Drawing::Font(L"Segoe Print", 14.25743F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonTchats->Location = System::Drawing::Point(58, 373);
+			this->buttonTchats->Name = L"buttonTchats";
+			this->buttonTchats->Size = System::Drawing::Size(195, 43);
+			this->buttonTchats->TabIndex = 9;
+			this->buttonTchats->Text = L"Чаты";
+			this->buttonTchats->UseVisualStyleBackColor = true;
+			this->buttonTchats->Visible = false;
 			// 
 			// helpProvider1
 			// 
@@ -261,5 +267,7 @@ namespace kursme {
 	private: System::Void buttonThelp_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void buttonTprofile_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void buttonExit_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonTshed_HelpRequested(System::Object^ sender, System::Windows::Forms::HelpEventArgs^ hlpevent);
+private: System::Void buttonTprofile_HelpRequested(System::Object^ sender, System::Windows::Forms::HelpEventArgs^ hlpevent);
 };
 }
