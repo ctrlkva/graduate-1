@@ -1,0 +1,40 @@
+C:\Users\strel\Desktop\kursme\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\kursme\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\kursme\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\kursme\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\kursme — копия (2)\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\kursme — копия (2)\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\kursme — копия (2)\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\kursme — копия (2)\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\kursme — копия (2) — копия\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\kursme — копия (2) — копия\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\kursme — копия (2) — копия\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\kursme — копия (2) — копия\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\курсач\kursme — копия (2) — копия — копия\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\курсач\kursme — копия (2) — копия — копия\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\курсач\kursme — копия (2) — копия — копия\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\курсач\kursme — копия (2) — копия — копия\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия — копия\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия — копия\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия — копия\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\курсач\Курсовая Абдураимова\kursme — копия (2) — копия — копия — копия\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\поведа\1 лаба\Абдураимова083\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\поведа\1 лаба\Абдураимова083\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\поведа\1 лаба\Абдураимова083\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\поведа\1 лаба\Абдураимова083\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\поведа\3 лаба\Абдураимова083\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\поведа\3 лаба\Абдураимова083\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\поведа\3 лаба\Абдураимова083\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\портфолио\083\Абдураимова А.Ю\4 курс\поведа\3 лаба\Абдураимова083\x64\Debug\kursme.exe
+C:\Users\strel\Desktop\Yes App\x64\Debug\kursme.vcxproj.AssemblyReference.cache
+C:\Users\strel\Desktop\Yes App\x64\Debug\kursme.MyForm.resources
+C:\Users\strel\Desktop\Yes App\x64\Debug\kursme.vcxproj.GenerateResource.cache
+C:\Users\strel\Desktop\Yes App\x64\Debug\kursme.exe

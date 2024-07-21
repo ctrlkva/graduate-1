@@ -112,15 +112,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="log.cpp" />
-    <ClCompile Include="reg.cpp" />
-    <ClCompile Include="rrev.cpp" />
-    <ClCompile Include="shed.cpp" />
+    <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="tmenu.cpp" />
-    <ClCompile Include="tprofile.cpp" />
-    <ClCompile Include="trev.cpp" />
-    <ClCompile Include="trevmenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -130,64 +123,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="log.h">
+    <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="profit.h" />
-    <ClInclude Include="reg.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="rrev.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="shed.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="tmenu.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="tprofile.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="trev.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="trevmenu.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="log.resx">
-      <DependentUpon>log.h</DependentUpon>
+    <EmbeddedResource Include="MyForm.resx">
+      <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="reg.resx">
-      <DependentUpon>reg.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rrev.resx">
-      <DependentUpon>rrev.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="shed.resx">
-      <DependentUpon>shed.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="tmenu.resx">
-      <DependentUpon>tmenu.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="tprofile.resx">
-      <DependentUpon>tprofile.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="trev.resx">
-      <DependentUpon>trev.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="trevmenu.resx">
-      <DependentUpon>trevmenu.h</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="kursme.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="png.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

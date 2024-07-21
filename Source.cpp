@@ -1,13 +1,11 @@
-#pragma once
-#include "log.h"
+#include "MyForm.h"
 #include <Windows.h>
-#include "tprofile.h"
 
 using namespace kursme;
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
-	Application::EnableVisualStyles();
-	Application::SetCompatibleTextRenderingDefault(false);
-	Application::Run(gcnew kursme::log());
-	return 0;
+    Application::EnableVisualStyles();
+    Application::SetCompatibleTextRenderingDefault(false);
+    Application::Run(gcnew MyForm);
+    return 0;
 }
